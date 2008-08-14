@@ -2,4 +2,10 @@
 load.t
 pod.t
 pod_coverage.t
-prereq.t
+#prereq.t
+pod_line.t
+blank.t
+comment.t
+code.t
+total.t
+count.t

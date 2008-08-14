@@ -8,6 +8,8 @@ no warnings;
 use subs qw();
 use vars qw($VERSION);
 
+use Carp qw(carp);
+
 $VERSION = '0.10_01';
 
 =head1 NAME
@@ -19,11 +21,10 @@ SourceCode::LineCounter::Perl - Count lines in Perl source code
 	use SourceCode::LineCounter::Perl;
 
 	my $counter    = SourceCode::LineCounter::Perl->new( 
-		file               => $file,
-		line_ending        => $/,
-		blank_line_regex   => qr/^\s*$/,
 		);
-	å
+
+	$counter->count;
+	
 	my $total_lines   = $counter->total;
 	
 	my $pod_lines     = $counter->documentation;
@@ -74,23 +75,57 @@ Move on to the next line.
 
 sub new
 	{
-	my $self = bless {}, $_[0];
+	my( $class, %hash ) = @_;
 	
-	while( <$fh> )
+	my $self = bless {}, $class;
+	$self->_init;
+	
+	$self;
+	}
+	
+=item reset
+
+Reset everything the object counted so you can use the same object
+with another file.
+
+=cut
+
+sub reset
+	{
+	$_[0]->_init;	
+	}
+	
+=item count( FILE )
+
+=cut
+
+sub count
+	{
+	my( $self, $file ) = @_;
+	
+	my $fh;
+	unless( open $fh, "<", $file )
 		{
-		$self->_clear_line_info;
+		carp "Could not open file [$file]: $!";
+		return;
+		}
 		
-		foreach my $type ( 
-			qw(
-			_is_blank 
-			_start_pod _end_pod _in_pod 
-			_has_comment
-			_is_code
-			)
-			)
+	$self->_clear_line_info;
+
+	LINE: while( <$fh> )
+		{
+		$self->_set_current_line( \$_ );
+		
+		$self->_total( \$_ );
+		$self->_is_blank( \$_ );
+		
+		foreach my $type ( qw( _start_pod _end_pod _pod_line ) )
 			{
-			$self->$type() and next;
+			$self->$type( \$_ ) && next LINE;
 			}
+			
+		$self->_is_comment( \$_ );
+		$self->_is_code( \$_ );
 		}
 		
 	$self;
@@ -100,6 +135,18 @@ sub _clear_line_info
 	{
 	$_[0]->{line_info} = {};
 	}
+
+sub _set_current_line
+	{
+	$_[0]->{line_info}{current_line} = \ $_[1];
+	}
+	
+sub _init
+	{
+	my @attrs = qw(total blank documentation code comment);
+	$_[0]->{$_} = 0 foreach @attrs;
+	$_[0]->_clear_line_info;
+	};
 	
 =item total
 
@@ -109,7 +156,7 @@ Returns the total number of lines in the file
 
 sub total  { $_[0]->{total}   }
 
-sub _total { $_[0]->{total}++ }
+sub _total { ++ $_[0]->{total} }
 
 =item documentation
 
@@ -120,12 +167,42 @@ and blank lines in Pod.
 
 sub documentation { $_[0]->{documentation} }
 
-sub _documentation 
+sub _start_pod 
 	{
+	return if $_[0]->_in_pod;
+	return unless ${$_[1]} =~ /^=\w+/;
+	
+	$_[0]->_mark_in_pod;
+	
+	$_[0]->{documentation}++;
 	
 	1;
 	}
+
+sub _end_pod
+	{
+	return unless $_[0]->_in_pod;
+	return unless ${$_[1]} =~ /^=cut$/;
 	
+	$_[0]->_clear_in_pod;
+	
+	$_[0]->{documentation}++;
+
+	1;
+	}
+
+sub _pod_line
+	{
+	return unless $_[0]->_in_pod;
+	
+	$_[0]->{documentation}++;
+	}
+	
+sub  _mark_in_pod { $_[0]->{line_info}{in_pod}++   }
+sub       _in_pod { $_[0]->{line_info}{in_pod}     }
+sub _clear_in_pod { $_[0]->{line_info}{in_pod} = 0 }
+
+
 =item code
 
 Returns the number of non-blank lines, whether documentation
@@ -135,12 +212,18 @@ or code.
 
 sub code { $_[0]->{code} }
 
-sub _code 
+sub _is_code 
 	{
-	return if grep { $_[0]->{line_info}{$_} }
-		qw(blank pod);
+	my( $self, $line_ref ) = @_;
+	
+	return if grep { $self->{line_info}{$_} }
+		qw(blank in_pod);
 		
-	$_[0]->{code}++;
+	( my $copy = $$line_ref ) =~ s/\s*#.*//;
+	
+	return unless length $copy;
+	
+	$self->{code}++;
 
 	1;
 	}
@@ -155,13 +238,13 @@ or code lines that have comments.
 
 sub comment { $_[0]->{comment} }
 
-sub _comment 
+sub _is_comment 
 	{
-	return if $_[0]->{line_info}{in_pod}
-	return unless $$_[1] =~ m/#/;
+	return if $_[0]->_in_pod;
+	return unless ${$_[1]} =~ m/#/;
 
 	$_[0]->{line_info}{comment}++;
-	$_[0]->{blank}++;
+	$_[0]->{comment}++;
 	
 	1;
 	}
@@ -178,7 +261,7 @@ sub blank  { $_[0]->{blank} }
 
 sub _is_blank 
 	{
-	return unless $$_[1] =~ m/^\s*$/;
+	return unless ${$_[1]} =~ m/^\s*$/;
 	
 	$_[0]->{line_info}{blank}++;
 	$_[0]->{blank}++;
