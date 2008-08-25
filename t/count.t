@@ -7,6 +7,9 @@ use Test::Output;
 
 use File::Spec::Functions qw(catfile);
 
+$SIG{__WARN__} = sub { print STDERR @_ };
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 my $class = "SourceCode::LineCounter::Perl";
 my @methods = qw( 
 	new reset count
