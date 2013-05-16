@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More 'no_plan';
+use Test::More;
 
 my $class = "SourceCode::LineCounter::Perl";
 my @methods = qw( 
@@ -73,3 +73,4 @@ foreach my $line ( @tests )
 is( $counter->comment, $start_count, "Comment line count did not change" );
 }
 
+done_testing();

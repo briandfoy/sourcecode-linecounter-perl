@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More 'no_plan';
+use Test::More;
 
 my $class = "SourceCode::LineCounter::Perl";
 my @methods = qw( 
@@ -39,3 +39,4 @@ foreach my $line ( @tests )
 is( $counter->total,  scalar @tests, "Right number of lines so far" );
 }
 
+done_testing();

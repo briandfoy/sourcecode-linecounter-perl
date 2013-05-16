@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More 'no_plan';
+use Test::More;
 
 my $class = "SourceCode::LineCounter::Perl";
 my @methods = qw( 
@@ -122,3 +122,5 @@ ok( ! $counter->_in_pod, "We are in pod after marking" );
 
 ok( ! $counter->_end_pod( \ "=end\n" ), "Not ending pod when not in pod" );
 }
+
+done_testing();

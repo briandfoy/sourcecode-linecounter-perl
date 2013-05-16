@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More 'no_plan';
+use Test::More;
 use Test::Output;
 
 use File::Spec::Functions qw(catfile);
@@ -65,3 +65,5 @@ stderr_like
 	qr/not open/,
 	"Carps for missing file";
 }
+
+done_testing();

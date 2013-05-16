@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More 'no_plan';
+use Test::More;
 
 my $class = "SourceCode::LineCounter::Perl";
 my @methods = qw( 
@@ -43,4 +43,6 @@ foreach my $line ( qw(Buster Mimi), "  Buster", "Mimi  " )
 
 is( $counter->blank, $start_count, "Blank line count did not change" );
 }
+
+done_testing();
 
