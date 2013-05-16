@@ -6,6 +6,10 @@
 	file. Still, if someone wants to make it perfect, go for
 	it.
 
+0.10_04 - Thu May 16 12:51:30 2013
+	* Examine a line but count it separately. Some counts were 
+	inflated because multiple places examined the same line.
+
 0.10_02 - Fri Aug 15 16:22:36 2008
 	* Get the right prereqs in the Makefile.PL
 
