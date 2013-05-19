@@ -6,6 +6,9 @@
 	file. Still, if someone wants to make it perfect, go for
 	it.
 
+1.01 - Sat May 18 23:55:02 2013
+	* Update to a major version
+
 0.10_04 - Thu May 16 12:51:30 2013
 	* Examine a line but count it separately. Some counts were 
 	inflated because multiple places examined the same line.
