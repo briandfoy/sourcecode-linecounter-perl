@@ -20,4 +20,7 @@ comment: %s
 blank: %s
 HERE
 
-printf $template, scalar @ARGV, map { $counter->$_() } qw( total documentation code comment blank );
+printf $template,
+	scalar @ARGV,
+	map { $counter->$_() }
+		qw( total documentation code comment blank );
