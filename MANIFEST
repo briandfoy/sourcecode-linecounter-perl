@@ -5,8 +5,7 @@ lib/SourceCode/LineCounter/Perl.pm
 LICENSE
 Makefile.PL
 MANIFEST			This list of files
-MYMETA.json
-MYMETA.yml
+MANIFEST.SKIP
 README
 t/blank.t
 t/code.t
