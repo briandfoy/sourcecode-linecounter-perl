@@ -1,10 +1,4 @@
-0.10_01 - Thu Aug 14 23:09:58 2008
-	* First release of a module to count the different
-	sorts of lines in a Perl module. This isn't designed to
-	be perfect, but to give a fingerprint of a file. If it's
-	a bit wrong, it will be wrong in the same way for the same
-	file. Still, if someone wants to make it perfect, go for
-	it.
+# Changes for Sourcecode::LineCounter::Perl
 
 1.02 - Fri Jan  3 12:27:31 2014
 	* Get rid of MYMETA
@@ -18,4 +12,12 @@
 
 0.10_02 - Fri Aug 15 16:22:36 2008
 	* Get the right prereqs in the Makefile.PL
+
+0.10_01 - Thu Aug 14 23:09:58 2008
+	* First release of a module to count the different
+	sorts of lines in a Perl module. This isn't designed to
+	be perfect, but to give a fingerprint of a file. If it's
+	a bit wrong, it will be wrong in the same way for the same
+	file. Still, if someone wants to make it perfect, go for
+	it.
 
