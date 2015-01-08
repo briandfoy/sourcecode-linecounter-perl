@@ -2,12 +2,14 @@ require 5.008;
 use strict;
 use warnings;
 
+use File::Spec::Functions qw(catfile);
 
+my $module    = 'SourceCode::LineCounter::Perl';
 my $github    = 'https://github.com/briandfoy/sourcecode-linecounter-perl';
-my $main_file = 'lib/SourceCode/LineCounter/Perl.pm';
+my $main_file = catfile( 'lib', split /::/, "$module.pm" );
 
 my %WriteMakefile = (
-	'NAME'	        => 'SourceCode::LineCounter::Perl',
+	'NAME'	        => $module,
 	'ABSTRACT_FROM' => $main_file,
 	'VERSION_FROM'  => $main_file,
 	'LICENSE'       => 'perl',
