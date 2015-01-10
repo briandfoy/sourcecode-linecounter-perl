@@ -48,7 +48,7 @@ my %WriteMakefile = (
 			},
 		},
 
-	clean  => { FILES    => q|SourceCode-LineCounter-Perl-*| },
+	clean  => { FILES => "$dist-*" },
 	);
 
 sub arguments { \%WriteMakefile }
