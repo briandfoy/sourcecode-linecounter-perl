@@ -1,6 +1,7 @@
 Changes
 corpus/hello.pl
 examples/loc
+INSTALL.SKIP
 lib/SourceCode/LineCounter/Perl.pm
 LICENSE
 Makefile.PL
