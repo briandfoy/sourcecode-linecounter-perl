@@ -23,7 +23,7 @@ for any Perl module.
 
 To read about L<SourceCode::LineCounter::Perl>, look at the embedded documentation
 in the module itself. Inside the distribution, you can format it
-with L<perldoc|http://perldoc.perl.org/perldoc.html>:
+with L<perldoc|https://perldoc.perl.org/perldoc.html>:
 
 	% perldoc lib/SourceCode/LineCounter/Perl.pm
 
@@ -33,7 +33,7 @@ name instead of the file location:
 	% perldoc SourceCode::LineCounter::Perl
 
 You can read the documentation and inspect the meta data at
-L<MetaCPAN|http://www.metacpan.org/module/SourceCode::LineCounter::Perl>.
+L<MetaCPAN|https://www.metacpan.org/module/SourceCode::LineCounter::Perl>.
 
 The standard module documentation has example uses in the SYNOPSIS
 section, but you can also look in the I<examples/> directory (if it's
@@ -92,7 +92,7 @@ that's the best way for me to forget to do something.
 
 Besides the issue trackers, you can find help at
 L<Perlmonks|http://www.perlmonks.org> or
-L<Stackoverflow|http://www.stackoverflow.com>, both of which have many
+L<Stackoverflow|https://www.stackoverflow.com>, both of which have many
 competent Perlers who can answer your question, almost in real time.
 They might not know the particulars of this module, but they can help
 you diagnose your problem.
