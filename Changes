@@ -1,5 +1,8 @@
 Revision history for Perl module Sourcecode::LineCounter::Perl
 
+1.021 2018-06-17T12:58:40Z
+	* Clarify that it's the Artistic License 2.0.
+
 1.02 - 2014-01-03
 	* Get rid of MYMETA
 
