@@ -5,11 +5,10 @@ use warnings;
 no warnings;
 
 use subs qw();
-use vars qw($VERSION);
 
 use Carp qw(carp);
 
-$VERSION = '1.021';
+our $VERSION = '1.021';
 
 =encoding utf8
 
