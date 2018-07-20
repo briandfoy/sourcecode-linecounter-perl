@@ -10,7 +10,7 @@
 
 =for HTML <a href="https://github.com/briandfoy/sourcecode-linecounter-perl/blob/master/LICENSE"><img src="https://img.shields.io/cpan/l/SourceCode-LineCounter-Perl.svg" /></a>
 
-=for HTML <a href="http://www.metacpan.org/module/SourceCode::LineCounter::Perl"><img src="https://img.shields.io/cpan/v/SourceCode-LineCounter-Perl.svg" /></A>
+=for HTML <a href="https://metacpan.org/pod/SourceCode::LineCounter::Perl"><img src="https://img.shields.io/cpan/v/SourceCode-LineCounter-Perl.svg" /></A>
 
 =head1 The SourceCode::LineCounter::Perl module
 
@@ -33,7 +33,7 @@ name instead of the file location:
 	% perldoc SourceCode::LineCounter::Perl
 
 You can read the documentation and inspect the meta data at
-L<MetaCPAN|https://www.metacpan.org/module/SourceCode::LineCounter::Perl>.
+L<MetaCPAN|https://metacpan.org/pod/SourceCode::LineCounter::Perl>.
 
 The standard module documentation has example uses in the SYNOPSIS
 section, but you can also look in the I<examples/> directory (if it's
