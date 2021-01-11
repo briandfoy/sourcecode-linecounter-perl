@@ -2,6 +2,12 @@
 
 =encoding utf8
 
+=for HTML <a href="../../actions?query=workflow%3Amacos"><img src="../../workflows/macos/badge.svg"></a>
+
+=for HTML <a href="../../actions?query=workflow%3Aubuntu"><img src="../../workflows/ubuntu/badge.svg"></a>
+
+=for HTML <a href="../../actions?query=workflow%3Awindows"><img src="../../workflows/windows/badge.svg"></a>
+
 =for HTML <a href='https://ci.appveyor.com/project/briandfoy/sourcecode-linecounter-perl'><img src='https://ci.appveyor.com/api/projects/status/v32gktk7j51i0e6j' /></a>
 
 =for HTML <a href='https://coveralls.io/github/briandfoy/sourcecode-linecounter-perl?branch=master'><img src='https://coveralls.io/repos/github/briandfoy/sourcecode-linecounter-perl/badge.svg?branch=master' alt='Coverage Status' /></a>
