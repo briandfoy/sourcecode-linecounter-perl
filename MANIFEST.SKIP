@@ -64,3 +64,6 @@
 \.lwpcookies
 SourceCode-.*
 
+\bMANIFEST\s\d
+\bChanges\s\d
+
