@@ -6,8 +6,6 @@ use strict;
 use warnings;
 no warnings;
 
-use subs qw();
-
 use Carp qw(carp);
 
 our $VERSION = '1.021';
