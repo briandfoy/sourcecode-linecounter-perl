@@ -5,7 +5,15 @@ on:
         branches:
             - '*'
         tags-ignore:
-            - '*'
+            - 'release-*'
+        paths-ignore:
+            - '.appveyor.yml'
+            - '.github/**'
+            - '.gitignore'
+            - '.releaserc'
+            - 'Changes'
+            - 'LICENSE'
+            - 'README.pod'
         pull_request:
 
 jobs:
@@ -32,3 +40,11 @@ jobs:
               run: |
                 perl Makefile.PL
                 make test
+            - name: Run parallel tests
+              run: |
+                perl Makefile.PL
+                HARNESS_OPTION=j10 make test
+            - name: Run dist tests
+              run: |
+                perl Makefile.PL
+                make disttest
