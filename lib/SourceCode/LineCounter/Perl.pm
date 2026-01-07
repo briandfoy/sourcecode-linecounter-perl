@@ -333,7 +333,7 @@ brian d foy, C<< <briandfoy@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright © 2008-2025, brian d foy <bdfoy@cpan.org>. All rights reserved.
+Copyright © 2008-2026, brian d foy <bdfoy@cpan.org>. All rights reserved.
 
 You may redistribute this under the terms of the Artistic License 2.0.
 
